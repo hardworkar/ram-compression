@@ -14,6 +14,9 @@ class Node():
 class Huffman():
     def __init__(self, L):
       self.A = list(map(chr, range(ord('a'), ord('a') + L)))
+      self.c_idx = dict()
+      for i in range(L):
+        self.c_idx[self.A[i]] = i
       self.p = [pow(2.0, -i) for i in range(1, L)]
       self.p.append(self.p[-1])
 
@@ -39,7 +42,3 @@ class Huffman():
           trTree(node.child[0], seq + "0")
           trTree(node.child[1], seq + "1")
       trTree(e)
-  
-h = Huffman(15)
-for k, v in h.code.items():
-  print(k + " : " + v)
