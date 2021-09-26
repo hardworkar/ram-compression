@@ -1,54 +1,26 @@
 # Fast direct access to compressed memory
 
-## Comparison
+## Paper-based comparison
+https://hardworkar.notion.site/RAM-Compression-7b3e8925086b4e64ae7c036f00b1c7c9
 
-### "Fast direct access to variable length codes"
+## Existing stuff
 
-L = alphabet size \
-N = length of seq
+#### software
+- zswap
+- zram
+- Hurricane (Helix Software Company)
+- quantization?
+- Active Memory Expansion
+- 842 compression algorithm on POWER7+ chip
+- Wilson-Kaplan WKdm algorithm (Apple)
 
-- Theorem 1. \
-T = log(N) * (log(N) + log(log(L))) \
-S = N(h(p) + log(log(L+2)) + 4)
+#### hardware
+- IBM MXT - dedicated processor for transfers local cache <-> RAM
 
-- Theorem 2. \
-T = logM * (logM + log(logL)) + logN \
-S = N(h(p) + log(log(L+2)) + 4) + m * log(N(logL + 1)), \
-where M = N / m
+### Shortcomings???
 
-- Theorem 3. \
-T = log(m) * (log(N) + log(log(L))) \
-S = N * (hm(p) + (1/M) * (log(M) + log(log(L)) + O(1))) \
-where M = N / m, hm = ...
+- Low compression ratios - check this out
 
-##### Source:
-https://arxiv.org/abs/2107.14577
-##### Year: 2021
+- Background I/O
 
----
-
-###  "Space Efficient Direct Access Data Structure"
-
-...
-
-##### Source:
-https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7786150
-##### Year: 2016
-
----
-
-### "Enhanced Variable-Length Codes: Improved Compression with Efficient Random Access"
-
-##### Source:
-https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6824444
-##### Year: 2014
-
----
-
-### "DACs: Bringing Direct Access to Variable-Length Codes"
-
-...
-
-##### Source:
-https://users.dcc.uchile.cl/~gnavarro/ps/ipm12.pdf 
-##### Year: 2012
+- Increased thrashing - not understandable from wiki
